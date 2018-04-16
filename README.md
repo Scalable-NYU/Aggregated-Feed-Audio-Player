@@ -8,7 +8,8 @@ Please first install python3, pip3, and virtualenv
 
 1. **Install dependencies**
 
-The original library is already created so you only need to add new packages on it. Run the following to install existing packages:
+The original library is already created so you only need to add new packages in it. In *cc_radio_flask_1.0* directory, run the following to install existing packages:
+
 ```
 pip install -r requirements.txt
 ```
