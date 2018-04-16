@@ -4,8 +4,8 @@ from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 app = Flask(__name__)
 app.secret_key = "supersekrit"
 blueprint = make_twitter_blueprint(
-    api_key="my-key-here",
-    api_secret="my-secret-here",
+    api_key = "GNTPJ8alh2T4wC6396QB1qLao",
+    api_secret = "5mGnp5fHYea9nf57aiPhOR04wD1oUOJSAsP9rcYQCD2KilvPJn"
 )
 app.register_blueprint(blueprint, url_prefix="/login")
 
@@ -15,7 +15,10 @@ def index():
         return redirect(url_for("twitter.login"))
     resp = twitter.get("account/settings.json")
     assert resp.ok
-    return "You are @{screen_name} on Twitter".format(screen_name=resp.json()["screen_name"])
+    return "You are @{screen_name} on Twitter".format(screen_name = resp.json()["screen_name"])
+
+# @app.route("/login")
+# def 
 
 if __name__ == "__main__":
     app.run(debug = True)
