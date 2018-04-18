@@ -1,0 +1,6 @@
+future
+requests
+requests_oauthlib
+python-twitter
+pytz
+

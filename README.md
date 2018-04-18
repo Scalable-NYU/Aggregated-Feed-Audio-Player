@@ -1,7 +1,7 @@
 # Aggregated Feed Audio Player
 ## Introduction
 
-## Get Started
+## Initiate Flask
 0. **Prerequisit**
 
 Please first install python3, pip3, and virtualenv
@@ -32,3 +32,19 @@ $ export OAUTHLIB_INSECURE_TRANSPORT=1
 $ python app.py
 ```
 Then go to [localhost:5000](localhost:5000)
+
+## Get Tweet
+0. **Prerequisit**
+
+Go to *cc_get_tweet*, install the twitter API package
+
+```
+$ pip install -r requirements.txt
+```
+
+1. Run
+Run the *main.py* file, it generates a json file containing tweet information, file name in datetime format `Month Date Hour` in UTC time zone
+
+```
+$ python main.py
+```
