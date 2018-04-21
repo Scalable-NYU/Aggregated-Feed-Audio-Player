@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
+import get_my_tweets as tweets
 
 app = Flask(__name__)
 app.secret_key = "supersecret"
@@ -15,7 +16,7 @@ def index():
         return redirect(url_for("twitter.login"))
     resp = twitter.get("account/settings.json")
     assert resp.ok
-    return "You are @{screen_name} on Twitter".format(screen_name = resp.json()["screen_name"])
+    return tweets.main()
 
 # @app.route("/login")
 # def 
