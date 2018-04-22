@@ -8,22 +8,13 @@ user_table = dynamodb.create_table(
         {
             'AttributeName': 'User',
             'KeyType': 'HASH'  #Partition key
-        },
-        {
-            'AttributeName': 'Id',
-            'KeyType': 'RANGE'  #Sort key
         }
     ],
     AttributeDefinitions=[
         {
             'AttributeName': 'User',
             'AttributeType': 'S'
-        },
-        {
-            'AttributeName': 'Id',
-            'AttributeType': 'S'
-        },
-
+        }
     ],
     ProvisionedThroughput={
         'ReadCapacityUnits': 10,
