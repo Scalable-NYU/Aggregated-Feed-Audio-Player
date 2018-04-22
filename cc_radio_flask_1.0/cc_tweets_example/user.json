@@ -1,7 +1,14 @@
 {
-    "users": [
-        "netjimmy",
-        "andy"
-    ]
+	"users":[
+		{
+			"name": "jimmy",
+			"id": "1"
+		},
+		{	"name": "andy",
+			"id": "2"
+		},
+		{	"name": "Lizi",
+			"id": "3"
+		}
+	]
 }
-  
