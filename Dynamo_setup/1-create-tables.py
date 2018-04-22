@@ -2,7 +2,6 @@ import boto3
 
 dynamodb = boto3.resource('dynamodb')
 
-'''
 user_table = dynamodb.create_table(
     TableName='USER',
     KeySchema=[
@@ -33,7 +32,6 @@ user_table = dynamodb.create_table(
 )
 
 print("User Table status:", user_table.table_status)
-'''
 
 secret_table = dynamodb.create_table(
     TableName='SECRET',
