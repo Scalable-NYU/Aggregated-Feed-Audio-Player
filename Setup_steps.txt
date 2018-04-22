@@ -1,8 +1,8 @@
 0. Set-up the EC2 machine [Lizi]
 
 0.1 Get the access keys
-Access key ID: AKIAJ3FOIQ543YOGJVYQ
-Secret access key: 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
+Access key ID: AKIAJ3FOIQ*********
+Secret access key: kQFWEcDUrvN1VQL***********************
 
 0.2 Install all the required packages 
 pip
@@ -24,8 +24,8 @@ output = json
 vim ~/.aws/credential
 
 [default]
-aws_access_key_id = AKIAJ3FOIQ543YOGJVYQ
-aws_secret_access_key = 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
+aws_access_key_id = AKIAJ3F**********
+aws_secret_access_key = kQFWEcDUr****************
 
 1. Create the database [Lizi]
 USER (For user information)
@@ -38,15 +38,13 @@ Others...
 
 
 3. Write user registration script for new users [Haoran]
-
-
 4. Pull user authentication keys and store in database [Haoran]
-
+(Use 4-create-a-new-item.py as a template to store data)
 
 5. Write script to pull twitter/facebook data [Jimmy]
-
+(Use 7-read-from-dynamo.py as a template to pull data from dynamodb)
 
 6. Bulk-Dump/Write-in twitter/facebook data into the database [Jimmy]
-
+(Use 4-create-a-new-item.py as a template to store data)
 
 7. Enable querying dynamodb. Return text.
