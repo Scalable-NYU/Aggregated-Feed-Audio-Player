@@ -8,7 +8,7 @@ twtr_table = dynamodb.Table('TWTR')
 
 json_file = open('./data/user.json','r')
 users = json.load(json_file)
-'''
+
 for user in users['users']:
 	name = user['name']
 	userid = user['id']
@@ -45,7 +45,12 @@ for userid_key in secrets.keys():
 			user_key4:access_secret,
 		}
 	)
+
+
+
+
 '''
+# Jesus Christ! Gimme a proper JSON file!
 
 json_file = open('./data/twtr.json','r')
 twtr = json.load(json_file)
@@ -65,19 +70,21 @@ for userid_key in twtr.keys():
 		k4 = post[post_key4]
 		k5 = post[post_key5]
 		k6 = post[post_key6]
-	print('Adding user:'+userid_key)
-	twtr_table.put_item(
-		Item={
-			'User_ID':userid_key,
-			post_key1:k1,
-			post_key2:k2,
-			post_key3:k3,
-			post_key4:k4,
-			post_key5:k5,
-			post_key6:k6,
-		}
-	)
+	
+		twtr_table.put_item(
+			Item={
+				'User_ID':userid_key,
+				post_key1:k1,
+				post_key2:k2,
+				post_key3:k3,
+				post_key4:k4,
+				post_key5:k5,
+				post_key6:k6,
+			}
+		)
 
+		print('Adding userid='+userid_key)
+'''
 	
 
 
