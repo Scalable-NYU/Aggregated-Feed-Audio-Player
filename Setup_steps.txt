@@ -1,0 +1,48 @@
+0. Set-up the EC2 machine [Lizi]
+
+	0.1 Get the access keys
+		Access key ID: AKIAJ3FOIQ*********
+		Secret access key: kQFWEcDUrvN1VQL***********************
+
+	0.2 Install all the required packages 
+		pip
+			curl -O https://bootstrap.pypa.io/get-pip.py
+		flask
+			sudo pip install flask
+		boto3
+			sudo pip install boto3
+
+	0.3 Create AWS Credential Files
+		0.3.1 
+		vim ~/.aws/config
+
+			[default]
+			region = us-east-1
+			output = json
+
+		0.3.2
+		vim ~/.aws/credentials
+
+			[default]
+			aws_access_key_id = AKIAJ3F**********
+			aws_secret_access_key = kQFWEcDUr****************
+
+1. Create the database [Lizi]
+
+2. Write Dummy data into the tables [Lizi]
+
+3. Write user registration script for new users [Haoran]
+
+4. Pull user authentication keys and store in database [Haoran]
+
+5. Write script to pull twitter/facebook data [Jimmy]
+
+6. Bulk-Dump/Write-in twitter/facebook data into the database [Jimmy]
+
+7. Enable querying dynamodb. Return text. [Lizi] 
+
+
+
+
+
+
