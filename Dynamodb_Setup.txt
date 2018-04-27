@@ -27,20 +27,6 @@
 			aws_access_key_id = AKIAJ3F**********
 			aws_secret_access_key = kQFWEcDUr****************
 
-1. Create the database [Lizi]
-
-2. Write Dummy data into the tables [Lizi]
-
-3. Write user registration script for new users [Haoran]
-
-4. Pull user authentication keys and store in database [Haoran]
-
-5. Write script to pull twitter/facebook data [Jimmy]
-
-6. Bulk-Dump/Write-in twitter/facebook data into the database [Jimmy]
-
-7. Enable querying dynamodb. Return text. [Lizi] 
-
 
 
 

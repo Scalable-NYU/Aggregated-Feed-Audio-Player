@@ -50,7 +50,7 @@ def parse_tweet(user_id, traceback_time):
 
     user_tweets = []
     for tweet in homeTimeLine:
-        tweet_time = datetime.strptime(tweet.created_at, '%a %b %d %H:%M:%S %z %Y') # in UTC time
+        tweet_time = datetime.strptime(tweet.created_at, '%a %b %d %H:%M:%S +0000 %Y') # in UTC time
         if traceback_time < tweet_time:
             dic = {'screenName':tweet.user.name, 'text':tweet.text, 'time':tweet.created_at}
             try:
