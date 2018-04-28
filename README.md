@@ -22,17 +22,6 @@ $ pip freeze > requirements.txt
 
 Virtualenv does not support spaces in the path, which means such paths will be ignored and virtualenv will search for system python libraries.
 
-## Run
-
-1. **Twitter**
-
-Run the following code to start the app
-```
-$ python app.py
-```
-Then go to [localhost:5000](localhost:5000)
-
-
 ## Deployment on AWS
 1. **Connect to AWS EC2**
 
@@ -60,4 +49,4 @@ $ export LC_CTYPE="en_US.UTF-8"
 ```
 $ python app.py
 ```
-Then go to [this url](http://127.0.0.1:5000/)
+Then go to [public site](54.90.73.104)
