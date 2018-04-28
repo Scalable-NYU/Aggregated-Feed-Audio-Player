@@ -49,4 +49,4 @@ $ export LC_CTYPE="en_US.UTF-8"
 ```
 $ python app.py
 ```
-Then go to [public site](54.90.73.104)
+Public IP is: 54.90.73.104
