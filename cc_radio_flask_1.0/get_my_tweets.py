@@ -33,7 +33,7 @@ def local2utc(local_st):
     local_time = datetime.now()
     utc_time = datetime.utcnow()
     offset = local_time - utc_time
-    return ocal_st - offset
+    return local_st - offset
 
 
 def parse_tweet(user_id, traceback_time):
