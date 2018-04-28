@@ -55,3 +55,9 @@ It may run into **locale.Error: unsupported locale setting** issue. To solve thi
 $ export LC_ALL="en_US.UTF-8"
 $ export LC_CTYPE="en_US.UTF-8"
 ```
+
+4. **Run**
+```
+$ python app.py
+```
+Then go to [this url](http://127.0.0.1:5000/)
