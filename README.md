@@ -28,7 +28,30 @@ Virtualenv does not support spaces in the path, which means such paths will be i
 
 Run the following code to start the app
 ```
-$ export OAUTHLIB_INSECURE_TRANSPORT=1
 $ python app.py
 ```
 Then go to [localhost:5000](localhost:5000)
+
+
+## Deployment on AWS
+1. **Connect to AWS EC2**
+
+```
+$ chmod 400 ccProject.pem
+$ ssh -i ccProject.pem ubuntu@ec2-54-90-73-104.compute-1.amazonaws.com
+```
+2. **Install dependencies** 
+
+Similar to working on local machine, create virtual environment and install dependencies
+
+3. **Set locale**
+
+When you run 
+```
+$ pip install -r requirements.txt
+```
+It may run into **locale.Error: unsupported locale setting** issue. To solve this, run following command:
+```
+$ export LC_ALL="en_US.UTF-8"
+$ export LC_CTYPE="en_US.UTF-8"
+```
