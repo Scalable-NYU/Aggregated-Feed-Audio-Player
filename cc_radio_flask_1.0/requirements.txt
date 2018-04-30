@@ -29,4 +29,5 @@ requests
 requests_oauthlib
 python-twitter
 pytz
+boto3
 

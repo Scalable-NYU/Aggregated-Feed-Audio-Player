@@ -5,3 +5,4 @@ lib/
 bin/
 __pycache__/
 *.pem
+*.ipynb
