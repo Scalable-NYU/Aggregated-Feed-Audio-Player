@@ -20,10 +20,12 @@ pytz==2018.4
 requests==2.18.4
 requests-oauthlib==0.8.0
 six==1.11.0
+tornado==5.0.2
 urllib3==1.22
 URLObject==2.4.3
 Werkzeug==0.14.1
 wrapt==1.10.11
+<<<<<<< HEAD
 future
 requests
 requests_oauthlib
@@ -31,3 +33,5 @@ python-twitter
 pytz
 boto3
 
+=======
+>>>>>>> 80bd7045a19c8ea945943f73023e513ace6fe877
