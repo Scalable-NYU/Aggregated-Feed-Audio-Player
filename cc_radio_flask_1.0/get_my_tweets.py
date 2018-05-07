@@ -5,23 +5,23 @@ import json
 import pytz
 import sys
 
-def get_secrets(user_id):
+def get_meta():
     """
     Get user secrets
     """
-    with open('cc_tweets_example/secrets.json') as secrets:
-        secrets_json = json.load(secrets)
+    with open('cc_tweets_example/meta.json') as secrets:
+        meta_json = json.load(secrets)
 
-    return secrets_json[user_id]
+    return meta_json
 
-def get_users():
-    """
-    Get all user_id
-    """
-    with open('cc_tweets_example/user.json') as r:
-        user_json = json.load(r)
-
-    return user_json['users']
+# def get_users():
+#     """
+#     Get all user_id
+#     """
+#     with open('cc_tweets_example/user.json') as r:
+#         user_json = json.load(r)
+#
+#     return user_json['users']
 
 def utc2local(utc_st):
     local_time = datetime.now()
@@ -36,19 +36,19 @@ def local2utc(local_st):
     return local_st - offset
 
 
-def parse_tweet(user_id, traceback_time):
+def parse_tweet(user_meta, traceback_time):
     """
     Parse user tweets traceback to specific time
     """
-    user_secrets = get_secrets(user_id)
-    api = twitter.Api(consumer_key=user_secrets['consumer_key'],
-                      consumer_secret=user_secrets['consumer_secret'],
-                      access_token_key=user_secrets['access_token_key'],
-                      access_token_secret=user_secrets['access_token_secret'])
+
+    api = twitter.Api(consumer_key=user_meta['consumer_key'],
+                      consumer_secret=user_meta['consumer_secret'],
+                      access_token_key=user_meta['access_token_key'],
+                      access_token_secret=user_meta['access_token_secret'])
 
     homeTimeLine = api.GetHomeTimeline()
 
-    user_tweets = []
+    user_tweets = {}
     for tweet in homeTimeLine:
         tweet_time = datetime.strptime(tweet.created_at, '%a %b %d %H:%M:%S +0000 %Y') # in UTC time
         if traceback_time < tweet_time:
@@ -77,7 +77,7 @@ def parse_tweet(user_id, traceback_time):
                 dic['favorite_count'] = 0
                 pass
 
-            user_tweets.append(dic)
+            user_tweets[tweet.id]=dic
         else:
             break
     return user_tweets
@@ -88,11 +88,13 @@ def main():
     # time_slot = argv[1]
     cur_time = datetime.utcnow()
     traceback_time = cur_time - timedelta(hours=time_slot)
-    user_list = get_users()
+    user_meta = get_meta()
+
+    user_list = list(user_meta.keys())
 
     result = {}
     for usr in user_list:
-        result[usr] = parse_tweet(usr, traceback_time)
+        result[usr] = parse_tweet(user_meta[usr], traceback_time)
 
     with open ('cc_tweets_example/{0}00.json'.format(cur_time.strftime('%m%d%H')), 'w') as w: # UTC time
         json.dump(result, w)
