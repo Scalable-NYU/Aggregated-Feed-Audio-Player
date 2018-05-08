@@ -5,26 +5,14 @@ import json
 import pytz
 import sys
 import boto3
+import re
 from boto3.dynamodb.conditions import Key, Attr
-
-def utc2local(utc_st):
-    local_time = datetime.now()
-    utc_time = datetime.utcnow()
-    offset = local_time - utc_time
-    return utc_st + offset
-
-def local2utc(local_st):
-    local_time = datetime.now()
-    utc_time = datetime.utcnow()
-    offset = local_time - utc_time
-    return ocal_st - offset
-
 
 def parse_tweet(traceback_time, cur_time_str):
     """
     Parse user tweets traceback to specific time and store in dynamodb
     """
-    dynamodb = boto3.resource('dynamodb',region_name="us-east-2")
+    dynamodb = boto3.resource('dynamodb')
 
     # read user_list from database
     meta_table = dynamodb.Table('META')
@@ -47,7 +35,15 @@ def parse_tweet(traceback_time, cur_time_str):
         for tweet in homeTimeLine:
             tweet_time = datetime.strptime(tweet.created_at, '%a %b %d %H:%M:%S +0000 %Y') # in UTC time
             if traceback_time < tweet_time:
-                dic = {'screenName':tweet.user.name, 'text':tweet.text, 'created_at':tweet.created_at}
+                text = tweet.text
+                clean_tweet = re.match('(.*?)http.*?\s?(.*?)', text)
+                if clean_tweet:
+                    text = clean_tweet.group(1)
+
+                dic = {'screenName':tweet.user.name,
+                        'text':text,
+                        'created_at':tweet.created_at,
+                        'tweet_id':tweet.id}
                 try:
                     dic['quote_count'] = tweet.quote_count
                 except:
@@ -71,6 +67,7 @@ def parse_tweet(traceback_time, cur_time_str):
                 except:
                     dic['favorite_count'] = 0
                     pass
+                dic['category'] = "any"
 
                 tweet_list.append(dic)
             else:

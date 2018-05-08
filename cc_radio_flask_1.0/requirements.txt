@@ -25,13 +25,10 @@ urllib3==1.22
 URLObject==2.4.3
 Werkzeug==0.14.1
 wrapt==1.10.11
-<<<<<<< HEAD
 future
 requests
 requests_oauthlib
 python-twitter
 pytz
 boto3
-
-=======
->>>>>>> 80bd7045a19c8ea945943f73023e513ace6fe877
+gTTS
