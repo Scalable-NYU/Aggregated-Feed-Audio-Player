@@ -50,3 +50,10 @@ $ export LC_CTYPE="en_US.UTF-8"
 $ python app.py
 ```
 Public IP is: 54.90.73.104
+
+## Resource:
+
+- https://sysadmins.co.za/interfacing-amazon-dynamodb-with-python-using-boto3/  
+- https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.02.html  
+- https://www.datasciencebytes.com/bytes/2015/02/28/using-flask-to-answer-sql-queries/  
+- https://www.datasciencebytes.com/bytes/2015/02/24/running-a-flask-app-on-aws-ec2/  
