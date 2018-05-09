@@ -26,6 +26,7 @@ def logout():
 @app.route("/twitter")
 def twitter_profile():
     resp = twitter.get("account/settings.json")
+    print(resp.json()["screen_name"])
     return redirect("https://twitter.com/@" + resp.json()["screen_name"])
 
 @app.route("/notion")

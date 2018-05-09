@@ -6,4 +6,4 @@ bin/
 __pycache__/
 *.pem
 *.ipynb
-cc_tweets/text_classification/
+cc_tweets/runs/checkpoints
