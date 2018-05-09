@@ -8,6 +8,15 @@ import boto3
 import re
 from boto3.dynamodb.conditions import Key, Attr
 
+def clean_string(string):
+    string = " ".join(string.split())
+    string = string.replace("@", "")
+    string = string.replace("|", "")
+    string = re.sub(r"http\S+", "", string)
+    string = re.sub(r"#\S+", "", string)
+    string = string.strip()
+    return string
+
 def parse_tweet(traceback_time, cur_time_str):
     """
     Parse user tweets traceback to specific time and store in dynamodb
@@ -32,14 +41,12 @@ def parse_tweet(traceback_time, cur_time_str):
         homeTimeLine = api.GetHomeTimeline()
 
         tweet_list=[]
+        text_list=[]
         for tweet in homeTimeLine:
             tweet_time = datetime.strptime(tweet.created_at, '%a %b %d %H:%M:%S +0000 %Y') # in UTC time
             if traceback_time < tweet_time:
-                text = tweet.text
-                clean_tweet = re.match('(.*?)http.*?\s?(.*?)', text)
-                if clean_tweet:
-                    text = clean_tweet.group(1)
-
+                text = clean_string(tweet.text)
+                text_list.append(text)
                 dic = {'screenName':tweet.user.name,
                         'text':text,
                         'created_at':tweet.created_at,
@@ -67,11 +74,14 @@ def parse_tweet(traceback_time, cur_time_str):
                 except:
                     dic['favorite_count'] = 0
                     pass
-                dic['category'] = "any"
-
                 tweet_list.append(dic)
             else:
                 break
+
+        # text_label = get_predicted_label(text_list)
+        #
+        # for i in range(0, len(text_label)):
+        #     tweet_list[i]['category'] = text_label[i]
 
         twtr_table.put_item(
             Item = {
@@ -80,7 +90,6 @@ def parse_tweet(traceback_time, cur_time_str):
                 'tweets':tweet_list
             }
         )
-
 
 def main():
     time_slot = 1
