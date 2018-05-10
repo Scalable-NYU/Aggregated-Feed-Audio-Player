@@ -35,6 +35,7 @@ def logout():
 @app.route("/twitter")
 def twitter_profile():
     resp = twitter.get("account/settings.json")
+    print(resp.json()["screen_name"])
     return redirect("https://twitter.com/@" + resp.json()["screen_name"])
 
 @app.route("/notion")
@@ -60,4 +61,8 @@ def get_stream():
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     app.run(debug = True)
+=======
+    app.run(host='0.0.0.0', port=80)
+>>>>>>> 23f4eca634185bf0953eb46c84f498ebe4bba62e

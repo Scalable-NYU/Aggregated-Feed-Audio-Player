@@ -7,6 +7,7 @@ import sys
 import boto3
 import re
 from boto3.dynamodb.conditions import Key, Attr
+import eval_server
 
 def clean_string(string):
     string = " ".join(string.split())
@@ -78,10 +79,9 @@ def parse_tweet(traceback_time, cur_time_str):
             else:
                 break
 
-        # text_label = get_predicted_label(text_list)
-        #
-        # for i in range(0, len(text_label)):
-        #     tweet_list[i]['category'] = text_label[i]
+        text_label = eval_server.get_predicted_label(text_list)
+        for i in range(0, len(text_label)):
+            tweet_list[i]['category'] = text_label[i]
 
         twtr_table.put_item(
             Item = {
