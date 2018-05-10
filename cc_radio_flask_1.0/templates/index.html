@@ -27,40 +27,40 @@
         </nav>
 
         <div class="container-fluid">
+            <h2 class="text-center">Twitter Audio Player</h2>
+            {% for entry in entries %}
             <div>
-                <h2 class="text-center">Twitter Audio Player</h2>
                 <div class="btn-group btn-group-justified">
-                    <a href="/stop" class="btn btn-lg btn-danger">Stop</a>
-                    <a href="/next" class="btn btn-lg btn-success">Next</a>
+                    <a class="btn btn-lg btn-danger" href="/stop">Stop</a>
+                    <a class="btn btn-lg btn-success" href="/{{ entry.next_url }}">Next</a>
                 </div>
             </div>
 
             <div id="audio-list">
-                {% for entry in entries %}
                 <div class="well">
-                    <h2>{{ entry.name }}</h2>
+                    <h2>{{ entry }}</h2>
                     <div class="row">
                         <div class="col-md-3">
                             <div></div>
                         </div>
                         <div class="col-md-3">
-                            <div>Genre: <b>{{ entry.genre }}</b></div>
-                        </div>
-                        <div class="col-md-3">
-                            <div>Rating: <b>{{ entry.rating }}</b></div>
-                        </div>
-                        <div class="col-md-3">
                             <div class="pull-right">
-                                <a class="btn btn-info btn-large" href="/{{ entry.id }}">PLAY</a>
+                                <a class="btn btn-info btn-large" href="/{{ entry.url }}">PLAY</a>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                {% else %}
-                    <li><em>No audios so far</em>
-                {% endfor %}
             </div>
+            {% else %}
+            <div>
+                <div class="btn-group btn-group-justified">
+                    <a href="/stop" class="btn btn-lg btn-danger">Stop</a>
+                    <a href="/next" class="btn btn-lg btn-success">Next</a>
+                </div>
+            </div>
+            <li><em>No audios so far</em>
+            {% endfor %}
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
