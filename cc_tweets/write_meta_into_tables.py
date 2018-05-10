@@ -8,19 +8,30 @@ def gen_url(user_id, hour, category):
 def get_audio_url(user_id):
 	category = ["summary", "science", "business", "sport", "world"]
 	dic = {}
-	for i in range(0, 24):
-		next = i - 1
-		if next == -1 :
-			next = 23
-		tmp = {}
-		for cat in category:
-			tmp[cat] = {
-				'url':gen_url(user_id, i, cat),
-				'next':str(next)
-			}
-		dic[str(i)] = tmp
-
+	for cat in category:
+		tmp_list = []
+		for t in range(0, 24):
+			next = t-1
+			if next == -1:
+				next = 23
+			tmp_dic = {'time':t, 'url':gen_url(user_id, t, cat), 'next_url':gen_url(user_id, next, cat)}
+			tmp_list.append(tmp_dic)
+		dic[cat] = tmp_list
 	return dic
+	
+	# for i in range(0, 24):
+	# 	next = i - 1
+	# 	if next == -1 :
+	# 		next = 23
+	# 	tmp = {}
+	# 	for cat in category:
+	# 		tmp[cat] = {
+	# 			'url':gen_url(user_id, i, cat),
+	# 			'next':str(next)
+	# 		}
+	# 	dic[str(i)] = tmp
+	#
+	# return dic
 
 # dump meta json into dynamodb
 dynamodb = boto3.resource('dynamodb')
@@ -44,7 +55,7 @@ for usr in user_list:
 	audio_table.put_item(
 		Item = {
 			'user_id':usr,
-			'time':get_audio_url(usr)
+			'category':get_audio_url(usr)
 		}
 	)
 
