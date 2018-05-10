@@ -53,9 +53,12 @@ def stop_stream():
 
 @app.route("/<string:stream_url>")
 def mpc_play(stream_url):
+    print(stream_url)
     media = instance.media_new(stream_url)
     player.set_media(media)
     player.play()
+    while True:
+        pass
     return redirect('/')
 
 def get_stream():

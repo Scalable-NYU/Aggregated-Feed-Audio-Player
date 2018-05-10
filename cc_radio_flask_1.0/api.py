@@ -7,4 +7,4 @@ def get_entry(user_id):
     )
     return response['Item']['category']
 
-print(get_entry('netjimmy'))
+# print(get_entry('netjimmy'))
