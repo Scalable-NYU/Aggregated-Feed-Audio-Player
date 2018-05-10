@@ -3,7 +3,7 @@ from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 
 import vlc
 
-from api import get_audio_url
+from api import get_entry
 
 # # To execute commands outside of Python
 # def run_cmd(cmd):
@@ -55,14 +55,10 @@ def mpc_play(stream_url):
 
 def get_stream():
     usr_id = "andy"
-    entries = get_audio_url(usr_id)
+    entries = get_entry(usr_id)
 
     return entries
 
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     app.run(debug = True)
-=======
-    app.run(host='0.0.0.0', port=80)
->>>>>>> 23f4eca634185bf0953eb46c84f498ebe4bba62e

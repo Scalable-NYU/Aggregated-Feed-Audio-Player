@@ -5,6 +5,6 @@ def get_entry(user_id):
     response = audio_table.get_item(
         Key={'user_id': user_id}
     )
-    return response['Item']
+    return response['Item']['category']
 
 print(get_entry('netjimmy'))
