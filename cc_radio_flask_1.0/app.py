@@ -5,8 +5,8 @@ from subprocess import *
 import vlc
 
 # Define VLC instance and player
-instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
-player=instance.media_player_new()
+#instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
+#player=instance.media_player_new()
 
 from api import get_entry
 
@@ -53,6 +53,7 @@ def stop_stream():
 
 @app.route("/<string:stream_url>")
 def mpc_play(stream_url):
+    print("called")
     print(stream_url)
     media = instance.media_new(stream_url)
     player.set_media(media)
@@ -69,4 +70,4 @@ def get_stream():
 
 
 if __name__ == "__main__":
-    app.run(host = '0.0.0.0', port = 80)
+    app.run(debug = True)
