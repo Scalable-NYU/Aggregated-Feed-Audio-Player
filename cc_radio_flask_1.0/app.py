@@ -1,16 +1,16 @@
 from flask import Flask, redirect, url_for, render_template
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 
-import vlc
+from subprocess import *
 
 from api import get_entry
 
-# # To execute commands outside of Python
-# def run_cmd(cmd):
-#     print("Called")
-#     p = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=STDOUT)
-#     output = p.communicate()[0]
-#     return output
+# To execute commands outside of Python
+def run_cmd(cmd):
+    print("Called")
+    p = Popen(cmd, shell=True, stdout=PIPE, stderr=STDOUT)
+    output = p.communicate()[0]
+    return output
 
 app = Flask(__name__)
 app.secret_key = "supersecret"
@@ -44,13 +44,15 @@ def notion():
 
 @app.route("/stop")
 def stop_stream():
+    run_cmd('mpc stop')
     return redirect('/')
 
 @app.route("/<string:stream_url>")
 def mpc_play(stream_url):
     print("called")
-    p = vlc.MediaPlayer(stream_url)
-    p.play()
+    run_cmd('mpc clear')
+    run_cmd( ['mpc add %s' % (stream_url)])
+    run_cmd('mpc play')
     return redirect('/')
 
 def get_stream():
