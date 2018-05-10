@@ -2,15 +2,20 @@ from flask import Flask, redirect, url_for, render_template
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 
 from subprocess import *
+import vlc
+
+# Define VLC instance and player
+instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
+player=instance.media_player_new()
 
 from api import get_entry
 
-# To execute commands outside of Python
-def run_cmd(cmd):
-    print("Called")
-    p = Popen(cmd, shell=True, stdout=PIPE, stderr=STDOUT)
-    output = p.communicate()[0]
-    return output
+# # To execute commands outside of Python
+# def run_cmd(cmd):
+#     print("Called")
+#     p = Popen(cmd, shell=True, stdout=PIPE, stderr=STDOUT)
+#     output = p.communicate()[0]
+#     return output
 
 app = Flask(__name__)
 app.secret_key = "supersecret"
@@ -44,15 +49,13 @@ def notion():
 
 @app.route("/stop")
 def stop_stream():
-    run_cmd('mpc stop')
     return redirect('/')
 
 @app.route("/<string:stream_url>")
 def mpc_play(stream_url):
-    print("called")
-    run_cmd('mpc clear')
-    run_cmd( ['mpc add %s' % (stream_url)])
-    run_cmd('mpc play')
+    media = instance.media_new(stream_url)
+    player.set_media(media)
+    player.play()
     return redirect('/')
 
 def get_stream():
@@ -63,4 +66,4 @@ def get_stream():
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(host = '0.0.0.0', port = 80)
