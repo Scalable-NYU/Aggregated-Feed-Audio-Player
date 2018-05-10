@@ -37,6 +37,7 @@ def get_text(user_tweets):
     return sum, sci, business, sport, world
 
 def main():
+    category = ["summary", "science", "business", "sport", "world"]
     dynamodb = boto3.resource('dynamodb')
     meta_table = dynamodb.Table('META')
     twtr_table = dynamodb.Table('TWTR')
@@ -59,10 +60,10 @@ def main():
                 audio.save('./audio/tmp.mp3')
 
                 # upload to s3
-                print(usr, cur_time.strftime('%-H'), i)
+                local_url = "{0}/{1}_{2}.mp3".format(usr, cur_time.strftime('%-H'), category[i])
                 s3.upload_file("./audio/tmp.mp3",
                             "cc-project-s3",
-                            "{0}/{1}_{2}.mp3".format(usr, cur_time.strftime('%-H'), i),
+                            local_url,
                             ExtraArgs={'ACL': 'public-read'}
                             )
 

@@ -54,3 +54,25 @@ twtr_table = dynamodb.create_table(
 )
 
 print("TWTR Table status:", twtr_table.table_status)
+
+audio_table = dynamodb.create_table(
+    TableName='AUDIO',
+    KeySchema=[
+        {
+            'AttributeName': 'user_id',
+            'KeyType': 'HASH'  #Partition key
+        }
+    ],
+    AttributeDefinitions=[
+        {
+            'AttributeName': 'user_id',
+            'AttributeType': 'S'
+        }
+    ],
+    ProvisionedThroughput={
+        'ReadCapacityUnits': 10,
+        'WriteCapacityUnits': 10
+    }
+)
+
+print("AUDIO Table status:", audio_table.table_status)
