@@ -1,21 +1,8 @@
 from flask import Flask, redirect, url_for, render_template
 from flask_dance.contrib.twitter import make_twitter_blueprint, twitter
 
-from subprocess import *
-import vlc
-
-# Define VLC instance and player
-#instance = vlc.Instance('--input-repeat=-1', '--fullscreen')
-#player=instance.media_player_new()
-
 from api import get_entry
-
-# # To execute commands outside of Python
-# def run_cmd(cmd):
-#     print("Called")
-#     p = Popen(cmd, shell=True, stdout=PIPE, stderr=STDOUT)
-#     output = p.communicate()[0]
-#     return output
+import time
 
 app = Flask(__name__)
 app.secret_key = "supersecret"
@@ -47,21 +34,6 @@ def twitter_profile():
 def notion():
     return redirect("https://www.notion.so/cloudcomputingproject/Final-Presentation-Stuff-646a903c3f8b456f98d842b8224d55df")
 
-@app.route("/stop")
-def stop_stream():
-    return redirect('/')
-
-@app.route("/<string:stream_url>")
-def mpc_play(stream_url):
-    print("called")
-    print(stream_url)
-    media = instance.media_new(stream_url)
-    player.set_media(media)
-    player.play()
-    while True:
-        pass
-    return redirect('/')
-
 def get_stream():
     usr_id = "andy"
     entries = get_entry(usr_id)
@@ -70,4 +42,4 @@ def get_stream():
 
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(host = '0.0.0.0', port = 80)
