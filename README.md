@@ -23,6 +23,10 @@ On the technical side, such project demands good setups for data mining and mach
 - Le Wang: lw2341@nyu.edu
 - Chun-Yi Yang: cyy292@nyu.edu
 
+## Presentation File:
+
+[Presentation File](../blob/master/Presentation.pdf)
+
 ## Resource:
 
 - https://sysadmins.co.za/interfacing-amazon-dynamodb-with-python-using-boto3/  
