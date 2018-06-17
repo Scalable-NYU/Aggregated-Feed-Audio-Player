@@ -25,7 +25,7 @@ On the technical side, such project demands good setups for data mining and mach
 
 ## Presentation File:
 
-[Presentation File](https://github.com/Scalable-NYU/Aggregated-Feed-Audio-Player/blob/master/Presentation.pdf)
+[Presentation File](https://github.com/Scalable-NYU/Aggregated-Feed-Audio-Player/blob/master/Final_Presentation.pdf)
 
 ## Resource:
 
