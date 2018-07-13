@@ -1,4 +1,4 @@
-# Aggregated Feed Audio Player
+# Twitter Feed Audio Player
 ## Introduction
 
 ## Initiate Flask
