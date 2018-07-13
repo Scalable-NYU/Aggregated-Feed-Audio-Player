@@ -1,55 +1,32 @@
-# Twitter Feed Audio Player
 ## Introduction
+# Twitter Feed Audio Player
 
-## Initiate Flask
-0. **Prerequisit**
+## Idea:
+**Imagine that you are driving and want to listen to a personalized radio.**
 
-Please first install python3, pip3, and virtualenv
+Create a mobile phone application that tells you political, social, geeky stories that your friends have posted via audio or a facebook news paper.
 
-1. **Install dependencies**
+Cloud angle: browser your friends feeds, gather links
+posted by them, group them into topics, covert them into
+audio headlines (or news paper feed)
 
-The original library is already created so you only need to add new packages in it. In *cc_radio_flask_1.0* directory, run the following to install existing packages:
+## Project Proposal:
+Social media produces a huge amount of information in modern society. People use social media to receive messages from their friends, followed celebrities and public organizations. However, people nowadays do not usually have enough time for all the blast of information, or rather they cannot digest the most essence of every day information. Since the trend of this era is all about massive data, we want to build a cloud application that can not only help us digest the most of every day information across all the social media platforms, but also reduce the size of the information to the most important, outstanding, and maybe interesting ones. Even further, we propose our application to have extra accessibility feature, which enable our users to listen to the stories and news happened on their social media accounts. 
 
-```
-$ pip install -r requirements.txt
-```
-Install new packages (ex. flask) and add to requirements.txt
-```
-$ pip install flask
-$ pip freeze > requirements.txt
-```
-2. **Warning**
+We think that being able to produce audible information from written text is the ultimate convenience for such information extraction application. In order to leverage most leisure time when reading is impractical; i.e., driving, riding packed subways, our users can simply put on headphone and skim through all the summaries of their daily social broadcast. 
 
-Virtualenv does not support spaces in the path, which means such paths will be ignored and virtualenv will search for system python libraries.
+On the technical side, such project demands good setups for data mining and machine learning as well as cloud computing architecture as the overall backbone. We need to ensure intact information scrapping, accurate data classification, and understandable text summarization.
 
-## Deployment on AWS
-1. **Connect to AWS EC2**
+## Team:
 
-```
-$ chmod 400 ccProject.pem
-$ ssh -i ccProject.pem ubuntu@ec2-54-90-73-104.compute-1.amazonaws.com
-```
-2. **Install dependencies** 
+- Lizi Chen: lc3397@nyu.edu
+- Haoran Ma: hm1651@nyu.edu
+- Le Wang: lw2341@nyu.edu
+- Chun-Yi Yang: cyy292@nyu.edu
 
-Similar to working on local machine, create virtual environment and install dependencies
+## Presentation File:
 
-3. **Set locale**
-
-When you run 
-```
-$ pip install -r requirements.txt
-```
-It may run into **locale.Error: unsupported locale setting** issue. To solve this, run following command:
-```
-$ export LC_ALL="en_US.UTF-8"
-$ export LC_CTYPE="en_US.UTF-8"
-```
-
-4. **Run**
-```
-$ python app.py
-```
-Public IP is: 54.90.73.104
+[Presentation File](https://github.com/Scalable-NYU/Aggregated-Feed-Audio-Player/blob/master/Final_Presentation.pdf)
 
 ## Resource:
 

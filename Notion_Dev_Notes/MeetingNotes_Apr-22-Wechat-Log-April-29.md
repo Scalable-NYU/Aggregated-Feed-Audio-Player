@@ -1,0 +1,3 @@
+# Apr 22: [Wechat Log] April 29之前的分工 
+
+@马昊然 周五之前能不能给我一个new user接口，把需要访问new user的所有信息return给我，我再存到dynamodb上。@Netjimmy 楊竣壹 Jimmy可以再通过访问dynamodb读取user login/authentication information来跑twitter scrapping program. 我会把Jimmy跑出来的twitter json数据写入dynamodb，并且提供用户端访问接口。这样的话整个project到目前为止就可以保证twitter text的输出，周五的时候我们再添加text-to-audio的function应该就可以了。@Cody W Cody如果在做part-1之余有空的话可以看一下text-to-audio的资源。周末的时候我们再把同样的function在google engine上实现一次应该就可以完工了。
