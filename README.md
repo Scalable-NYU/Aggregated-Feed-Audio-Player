@@ -1,4 +1,3 @@
-## Introduction
 # Twitter Feed Audio Player
 
 ## Idea:
