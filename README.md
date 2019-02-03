@@ -16,6 +16,12 @@ We think that being able to produce audible information from written text is the
 
 On the technical side, such project demands good setups for data mining and machine learning as well as cloud computing architecture as the overall backbone. We need to ensure intact information scrapping, accurate data classification, and understandable text summarization.
 
+## Architecture:
+![](pic/architecture.png)
+
+## Data Flow:
+![](pic/data_flow.png)
+
 ## Team:
 
 - Lizi Chen: lc3397@nyu.edu
